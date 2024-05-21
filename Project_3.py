@@ -1,21 +1,33 @@
-def Maze_Solver(file):
+def maze_translator(file):
         file = open(file, 'r')   
-        data = []
-        for row in file:
-            data.append([x for x in row.split()])
-        print(data)
-        i = 0
-        lst = []
-        for i in range((len(data))):
-            lst.append('i')
-            lst[i] = []
-        i = 0   
-        for line in data:
-            for letter in line:
-                lst[i].append(letter)
-                lst[i] = lst[i]
-            i+=1
-        print(lst)
+        matrix = []  
+        for line in file:
+            row = []
+            for letter in line.strip():
+                if letter == 'O':
+                    row.append(0)
+                elif letter == 'X':
+                    row.append(1)
+            matrix.append(row)
+            print(row)
+        return matrix
         
-        
-Maze_Solver('maze.txt')
+def m_to_g(maze):
+    nodes = set()
+    edges = []
+    u = []
+    for i, row in enumerate(maze):
+        index = 0
+        for j, k in enumerate(row):
+            if k is not None:
+                print(i,j)
+                nodes.add((i,j))
+                if k == 0:
+                    pass
+            
+    nodes = list(nodes)
+    return nodes
+            
+matrix = maze_translator('maze.txt')
+print(m_to_g(matrix))
+
